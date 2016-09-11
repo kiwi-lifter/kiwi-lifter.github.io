@@ -1,0 +1,67 @@
+{
+
+   "restaurants": [
+
+      {
+
+         "name": "The Blue Breeze Inn",
+
+         "address": "146 Ponsonby Rd, Ponsonby, Auckland 1011",
+
+         "lat": -36.855827,
+
+         "lng": 174.74629
+
+      },
+
+      {
+
+         "name": "Ponsonby Central",
+
+         "address": "136/146 Ponsonby Rd, Ponsonby, Auckland 1011",
+
+         "lat": -36.856346,
+
+         "lng": 174.74644
+
+      },
+
+      {
+
+         "name": "Prego Restaurant",
+
+         "address": "226 Ponsonby Rd, Ponsonby, Auckland 1011",
+
+         "lat": -36.852676,
+
+         "lng": 174.74481
+
+      },
+
+      {
+
+         "name": "Mekong Baby",
+
+         "address": "262 Ponsonby Rd, Ponsonby, Auckland 1011",
+
+         "lat": -36.850765,
+
+         "lng": 174.74428
+
+      },
+
+      {
+
+         "name": "SPQR",
+
+         "address": "150 Ponsonby Rd, Ponsonby, Auckland 1011",
+
+         "lat": -36.855724,
+
+         "lng": 174.74614
+
+      }
+
+   ]
+
+}
