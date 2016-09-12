@@ -17,8 +17,12 @@ function loadJSON(callback) {
                 // Parse JSON string into object
                 this.JSONdata = JSON.parse(response);
 				
+				//Activates google map which returns modified array for use by view model.
+				var data = initMap(this.JSONdata);
+				
 				// Activates knockout.js
-				ko.applyBindings(new AppViewModel(this.JSONdata));
+				ko.applyBindings(new AppViewModel(data));
+				
             });
 				
 }());
@@ -27,8 +31,8 @@ function loadJSON(callback) {
 function AppViewModel(data) {
 
 	var self = this;
-	
-	self.restaurants = ko.observableArray(data.restaurants);
+	console.log(data);
+	self.restaurants = ko.observableArray(data);
 
 	self.search_Name = ko.observable('');
 
@@ -42,34 +46,4 @@ function AppViewModel(data) {
 	
 });
 
-	
-	
-	
-	
  }
-
-// Activates knockout.js
-//ko.applyBindings(new AppViewModel());
-
-/**
-// Overall viewmodel for this screen, along with initial state
-function ReservationsViewModel() {
-    var self = this;
-
-    // Non-editable catalog data - would come from the server
-    self.availableMeals = [
-        { mealName: "Standard (sandwich)", price: 0 },
-        { mealName: "Premium (lobster)", price: 34.95 },
-        { mealName: "Ultimate (whole zebra)", price: 290 }
-    ];    
-
-    // Editable data
-    self.seats = ko.observableArray([
-        new SeatReservation("Steve", self.availableMeals[0]),
-        new SeatReservation("Bert", self.availableMeals[0])
-    ]);
-}
-
-ko.applyBindings(new ReservationsViewModel());
-
-**/

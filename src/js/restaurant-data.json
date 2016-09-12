@@ -8,9 +8,13 @@
 
          "address": "146 Ponsonby Rd, Ponsonby, Auckland 1011",
 
-         "lat": -36.855827,
+         "location": {
 
-         "lng": 174.74629
+            "lat": -36.855827,
+
+            "lng": 174.74629
+
+         }
 
       },
 
@@ -20,9 +24,13 @@
 
          "address": "136/146 Ponsonby Rd, Ponsonby, Auckland 1011",
 
-         "lat": -36.856346,
+         "location": {
 
-         "lng": 174.74644
+            "lat": -36.856346,
+
+            "lng": 174.74644
+
+         }
 
       },
 
@@ -32,9 +40,13 @@
 
          "address": "226 Ponsonby Rd, Ponsonby, Auckland 1011",
 
-         "lat": -36.852676,
+         "location": {
 
-         "lng": 174.74481
+            "lat": -36.852676,
+
+            "lng": 174.74481
+
+         }
 
       },
 
@@ -44,9 +56,13 @@
 
          "address": "262 Ponsonby Rd, Ponsonby, Auckland 1011",
 
-         "lat": -36.850765,
+         "location": {
 
-         "lng": 174.74428
+            "lat": -36.850765,
+
+            "lng": 174.74428
+
+         }
 
       },
 
@@ -56,9 +72,13 @@
 
          "address": "150 Ponsonby Rd, Ponsonby, Auckland 1011",
 
-         "lat": -36.855724,
+         "location": {
 
-         "lng": 174.74614
+            "lat": -36.855724,
+
+            "lng": 174.74614
+
+         }
 
       }
 
