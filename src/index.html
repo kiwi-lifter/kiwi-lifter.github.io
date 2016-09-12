@@ -16,15 +16,18 @@
 		<div class="container">	
 			<div class="row">
 			<h1 class="text-center">Map App</h1>
+	
 			<div class="col-sm-4">
-				<form id="searchForm" >
-					<div class="form-group">
-						<label for="">Search</label>
-						<input type="text" class="form-control" id="search" placeholder="enter address">
-					</div>
-				</form>	
+			
+				<label for="">Search</label>
+				<input data-bind="value: search_Name, valueUpdate: 'afterkeydown'" />
+
+				<p><strong>Local Restaurants</strong></p>
 				<div id="location-list" class="list-group">
+					<ul data-bind="foreach: filteredRestaurants">
+						<a href="#" class="list-group-item" data-bind="text: name"></a>
 					
+					</ul>
 				</div>
 	
 			</div>
@@ -34,14 +37,14 @@
 				<div id="map"></div>
 			
 			</div>
-			
-			
+	
 		</div>
 		</div><!-- end .container -->
 		
 		<script src="js/knockout-v3.4.0.js" async></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDuwZUaMFra6-fAFVcmuYwnIS_GRo6XzfA"></script>
 		<script src="js/google-map.js"></script>
+		<script src="js/appViewModel.js"></script>
 		<script src="js/jQuery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		

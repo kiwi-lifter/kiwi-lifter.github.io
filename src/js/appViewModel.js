@@ -1,4 +1,4 @@
-var GETDATA = (function(){
+(function(){
 
 function loadJSON(callback) {
                 var xobj = new XMLHttpRequest();
@@ -17,24 +17,19 @@ function loadJSON(callback) {
                 // Parse JSON string into object
                 this.JSONdata = JSON.parse(response);
 				
-				return this.JSONdata;
+				// Activates knockout.js
+				ko.applyBindings(new AppViewModel(this.JSONdata));
             });
 				
 }());
 
-console.log()
-function AppViewModel() {
-	
-	var self = this;
 
-	self.restaurants = ko.observableArray([
-		{name: "The Blue Breeze Inn", address: "146 Ponsonby Rd, Ponsonby, Auckland 1011", lat: -36.855828, lng: 174.746299},
-		{name: "Ponsonby Central", address: "136/146 Ponsonby Rd, Ponsonby, Auckland 1011", lat: -36.856346, lng: 174.746439},
-		{name: "Prego Restaurant", address: "226 Ponsonby Rd, Ponsonby, Auckland 1011", lat: -36.852677, lng: 174.744807},
-		{name: "Mekong Baby", address: "262 Ponsonby Rd, Ponsonby, Auckland 1011", lat: -36.850767, lng: 174.744283},
-		{name: "SPQR", address: "150 Ponsonby Rd, Ponsonby, Auckland 1011", lat: -36.855723, lng: 174.746135}
-	]);
+function AppViewModel(data) {
+
+	var self = this;
 	
+	self.restaurants = ko.observableArray(data.restaurants);
+
 	self.search_Name = ko.observable('');
 
 	self.filteredRestaurants = ko.computed(function () {
@@ -54,7 +49,7 @@ function AppViewModel() {
  }
 
 // Activates knockout.js
-ko.applyBindings(new AppViewModel());
+//ko.applyBindings(new AppViewModel());
 
 /**
 // Overall viewmodel for this screen, along with initial state

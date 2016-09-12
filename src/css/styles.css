@@ -1,5 +1,13 @@
 /** css custom styles for map project **/
 
-#map{
+#map {
 	height:300px;
+}
+
+input {
+	margin-bottom: 1em;
+}
+
+ul {
+	padding-left: 0;
 }
