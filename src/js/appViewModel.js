@@ -31,19 +31,21 @@ function loadJSON(callback) {
 function AppViewModel(data) {
 
 	var self = this;
-	console.log(data);
+	
 	self.restaurants = ko.observableArray(data);
 
 	self.search_Name = ko.observable('');
 
 	self.filteredRestaurants = ko.computed(function () {
-		
-    return ko.utils.arrayFilter(self.restaurants(), function (restaurant) {
-            return (
+	
+	var searchResult = ko.utils.arrayFilter(self.restaurants(), function (restaurant) {
+		    return (
                       (self.search_Name().length == 0 || restaurant.name.toLowerCase().indexOf(self.search_Name().toLowerCase()) > -1)
                    )        
     });
+		showFilteredMarkers(searchResult, self.restaurants());
 	
-});
+		return searchResult;
+	});
 
  }

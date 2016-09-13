@@ -20,12 +20,12 @@
 			<div class="col-sm-4">
 			
 				<label for="">Search</label>
-				<input data-bind="value: search_Name, valueUpdate: 'afterkeydown'" />
+				<input data-bind="textInput: search_Name, valueUpdate: 'afterkeydown'" />
 
 				<p><strong>Local Restaurants</strong></p>
 				<div id="location-list" class="list-group">
 					<ul data-bind="foreach: filteredRestaurants">
-						<a href="#" class="list-group-item" data-bind="text: name"></a>
+						<a href="#" class="list-group-item" data-bind="text: name, event: {mouseover: test}"></a>
 					
 					</ul>
 				</div>
@@ -42,10 +42,11 @@
 		</div><!-- end .container -->
 		
 		<script src="js/knockout-v3.4.0.js" async></script>
+		<script src="js/jQuery.js"></script>
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDuwZUaMFra6-fAFVcmuYwnIS_GRo6XzfA"></script>
 		<script src="js/google-map.js"></script>
+		
 		<script src="js/appViewModel.js"></script>
-		<script src="js/jQuery.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		
 	</body>

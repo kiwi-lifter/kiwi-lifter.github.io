@@ -1,6 +1,5 @@
 var map;
-// Create a new blank array for all the listing markers.
-var markers = [];
+
    function initMap(data){
 		
 		
@@ -29,9 +28,7 @@ var markers = [];
             animation: google.maps.Animation.DROP,
             id: i
           });
-          // Push the marker to our array of markers.
-          //markers.push(marker);
-		  
+          // Add the marker to locations array.
 		  locations[i].marker = marker;
           // Create an onclick event to open an infowindow at each marker.
           marker.addListener('click', function() {
@@ -45,12 +42,15 @@ var markers = [];
         // Extend the boundaries of the map for each marker
         map.fitBounds(bounds);
 		
-		
-		// This function populates the infowindow when the marker is clicked. We'll only allow
-      // one infowindow which will open at the marker that is clicked, and populate based
-      // on that markers position.
-      function populateInfoWindow(marker, infowindow) {
+		return locations;
+	}
+	
+	// This function populates the infowindow when the marker is clicked. We'll only allow
+    // one infowindow which will open at the marker that is clicked, and populate based
+    // on that markers position.
+    function populateInfoWindow(marker, infowindow) {
         // Check to make sure the infowindow is not already opened on this marker.
+		
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
           infowindow.setContent('<div>' + marker.title + '</div>');
@@ -64,7 +64,26 @@ var markers = [];
           });
 		  
         }
-      }
-			return locations;
+    }
+
+	// This function will loop through the filtered results and list them.
+    function showFilteredMarkers(filteredSearchArray, restaurantsArray) {
+		
+		for (var i = 0; i < restaurantsArray.length; i++) {
+			restaurantsArray[i].marker.setVisible(false);
+		}
+		
+		for (var i = 0; i < filteredSearchArray.length; i++) {
+			
+				filteredSearchArray[i].marker.setVisible(true);
+			}
+			
 	}
+	
+	function test(param){
+		var largeInfowindow = new google.maps.InfoWindow();
+		populateInfoWindow(param.marker, largeInfowindow);
+		
+	};
+	
 	
