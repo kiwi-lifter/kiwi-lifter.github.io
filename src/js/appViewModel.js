@@ -47,5 +47,10 @@ function AppViewModel(data) {
 	
 		return searchResult;
 	});
+	
+	self.openInfowindow = function(location) {
 
+		google.maps.event.trigger(location.marker, 'click');
+    }
+	
  }

@@ -25,7 +25,8 @@
 				<p><strong>Local Restaurants</strong></p>
 				<div id="location-list" class="list-group">
 					<ul data-bind="foreach: filteredRestaurants">
-						<a href="#" class="list-group-item" data-bind="text: name, event: {mouseover: test}"></a>
+						<!--<a href="#" class="list-group-item" data-bind="text: name, event: {mouseover: test}"></a>-->
+						<a href="#" class="list-group-item" data-bind="text: name, click: $parent.openInfowindow"></a>
 					
 					</ul>
 				</div>
