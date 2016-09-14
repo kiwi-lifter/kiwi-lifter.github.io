@@ -6,7 +6,9 @@
 
          "name": "The Blue Breeze Inn",
 
-         "address": "146 Ponsonby Rd, Ponsonby, Auckland 1011",
+         "address": "146 Ponsonby Rd, Ponsonby, Auckland, NZ",
+		 
+		 "web": "https://api.yelp.com/v2/business/the-blue-breeze-inn-auckland",
 
          "location": {
 
@@ -22,7 +24,9 @@
 
          "name": "MooChowChow",
 
-         "address": "23 Ponsonby Rd, Ponsonby, Auckland 1011",
+         "address": "23 Ponsonby Rd, Ponsonby, Auckland, NZ",
+		 
+		 "web": "https://api.yelp.com/v2/business/moochowchow-ponsonby",
 
          "location": {
 
@@ -38,7 +42,9 @@
 
          "name": "Prego Restaurant",
 
-         "address": "226 Ponsonby Rd, Ponsonby, Auckland 1011",
+         "address": "226 Ponsonby Rd, Ponsonby, Auckland, NZ",
+		 
+		 "web": "https://api.yelp.com/v2/business/prego-ponsonby",
 
          "location": {
 
@@ -54,7 +60,9 @@
 
          "name": "Mekong Baby",
 
-         "address": "262 Ponsonby Rd, Ponsonby, Auckland 1011",
+         "address": "262 Ponsonby Rd, Ponsonby, Auckland, NZ",
+		 
+		 "web": "https://api.yelp.com/v2/business/mekong-baby-auckland",
 
          "location": {
 
@@ -70,7 +78,9 @@
 
          "name": "SPQR",
 
-         "address": "150 Ponsonby Rd, Ponsonby, Auckland 1011",
+         "address": "150 Ponsonby Rd, Ponsonby, Auckland, NZ",
+		 
+		 "web": "https://api.yelp.com/v2/business/spqr-auckland",
 
          "location": {
 
