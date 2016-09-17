@@ -1,3 +1,5 @@
+var data;
+
 (function(){
 
 function loadJSON(callback) {
@@ -15,24 +17,24 @@ function loadJSON(callback) {
 
             loadJSON((response) => {
                 // Parse JSON string into object
-                this.JSONdata = JSON.parse(response);
+                data = JSON.parse(response);
 				
 				//Activates google map which returns modified array for use by view model.
-				var data = initMap(this.JSONdata);
+				initMap();
 				
 				// Activates knockout.js
-				ko.applyBindings(new AppViewModel(data));
+				ko.applyBindings(new AppViewModel);
 				
             });
 				
 }());
 
 
-function AppViewModel(data) {
-
+function AppViewModel() {
+	
 	var self = this;
 	
-	self.restaurants = ko.observableArray(data);
+	self.restaurants = ko.observableArray(data.restaurants);
 
 	self.search_Name = ko.observable('');
 

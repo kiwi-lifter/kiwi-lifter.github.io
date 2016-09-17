@@ -1,10 +1,9 @@
 
 
 var map;
-var locations;
 
-   function initMap(data){
-	   
+
+   function initMap(){
 	    // map style arrays
   var styles = [{"featureType":"all","elementType":"all","stylers":[{"saturation":-100},{"gamma":0.5}]}] // StyleMapType object 
   var styledMap = new google.maps.StyledMapType(styles,
@@ -19,64 +18,85 @@ var locations;
   
 		map = new google.maps.Map(document.getElementById('map'), 
 			 mapOptions);
-	/**
-		map = new google.maps.Map(document.getElementById('map'), {
-			center: {lat: -36.854222, lng: 174.745765},
-			zoom: 14
-		}, mapOptions);
-		
-	**/	
+	
 		map.mapTypes.set('map_style', styledMap);
 		map.setMapTypeId('map_style');
   
-		locations = data.restaurants;
-		
+		var locations = data.restaurants;
+
 		var largeInfowindow = new google.maps.InfoWindow();
 		
         var bounds = new google.maps.LatLngBounds
 		
-		// The following group uses the location array to create an array of markers on initialize.
+		//Uses the location array to create marker object on initialize.
         for (var i = 0; i < locations.length; i++) {
           // Get the position from the location array.
           var position = locations[i].location;
           var title = locations[i].name;
+
 		  
-		  var test = getYelpInfo(locations[i]);
-		  
-		  console.log('>>>>>>>>>>>', test);
-		  
+		
 		  // marker is an object with additional data about the pin for a single location
     var markerImage = {
 		url: 'images/marker-orange.png',
 		scaledSize: new google.maps.Size(35, 35), // scaled size
 	};
 		  
-          // Create a marker per location, and put into markers array.
+          // Create a marker per location, and put into locations array.
           var marker = new google.maps.Marker({
             map: map,
             position: position,
             title: title,
             animation: google.maps.Animation.DROP,
             id: i,
-			icon: markerImage
+			icon: markerImage	
           });
           // Add the marker to locations array.
 		  locations[i].marker = marker;
-          // Create an onclick event to open an infowindow at each marker.
-          marker.addListener('click', function() {
-            populateInfoWindow(this, largeInfowindow);
-          });
-		  
-		    //bounds.extend(markers[i].position);
-		  
+	
           bounds.extend(locations[i].marker.position);
         }
+		
+		var i;
+		
+		
+		for (i = 0; i < locations.length; i++) {
+			
+			var handleYelpResults = function(results, target){
+		
+				target.marker.yelpInfo = results;
+
+				// Create an onclick event to open an infowindow at each marker.
+				target.marker.addListener('click', function() {
+				
+					populateInfoWindow(this, largeInfowindow);
+					toggleBounce(this);
+				});
+		
+			};
+			
+			var yelpRequest = getYelpInfo(locations[i], handleYelpResults);
+		    
+			$.ajax(yelpRequest);
+			
+			
+		
+		}
+
         // Extend the boundaries of the map for each marker
         map.fitBounds(bounds);
-		
+			
 		return locations;
 	}
 	
+	function toggleBounce(marker) {
+        if (marker.getAnimation() !== null) {
+          marker.setAnimation(null);
+        } else {
+          marker.setAnimation(google.maps.Animation.BOUNCE);
+		  setTimeout(function(){marker.setAnimation(null); }, 1450);
+        }
+      }
 	// This function populates the infowindow when the marker is clicked. We'll only allow
     // one infowindow which will open at the marker that is clicked, and populate based
     // on that markers position.
@@ -86,7 +106,7 @@ var locations;
 		
         if (infowindow.marker != marker) {
           infowindow.marker = marker;
-          infowindow.setContent('<div>' + marker.title+'</div>');
+          infowindow.setContent('<div><img src="' + marker.yelpInfo.image_url+'" alt="Yelp restaurant image."></div>');
           infowindow.open(map, marker);
 		  
           // Make sure the marker property is cleared if the infowindow is closed.
@@ -113,22 +133,19 @@ var locations;
 			
 	}
 		
-		
 
 function generateNonce() {
 	return (Math.floor(Math.random() * 1e12).toString());
 }
 
-function getYelpInfo(target){
+function getYelpInfo(target, callback){
 
-//var YELP_BASE_URL = 'http://api.yelp.com/v2/search/'
 var YELP_BASE_URL = ''+ target.web +''
 	,YELP_CONSUMER_KEY = '_2Ah0MhfqD-6bTRas90k-g'
 	,YELP_TOKEN = 'iPD6CD5VbxITVXljAxqNFbksMf7f4z6C'
 	,YELP_CONSUMER_SECRET = '4tvw4xVA9rF-ERUfxIO35I6E0Lo' 
 	,YELP_TOKEN_SECRET = 'GaSqIVTr_yhTgPTnabngJCvOAy8';  
 	
-//var yelpURL = YELP_BASE_URL + 'Ponsonby+Auckland';
 
 var yelpURL = YELP_BASE_URL;
 
@@ -140,13 +157,7 @@ var parameters = {
 	oauth_signature_method: 'HMAC-SHA1',
 	oauth_version : '1.0',
 	callback: 'cb',
-
-	
-	//term: '262 Ponsonby Rd, Ponsonby, Auckland, NZ',
-	//term: target.address,
-	location: yelpURL,
-	//location: 'Ponsonby+Auckland',
-	limit: 20                   
+	location: yelpURL                   
 	};
 	
 	
@@ -157,26 +168,19 @@ parameters.oauth_signature = encodedSignature;
 var settings = {
 		url: yelpURL,
 		data: parameters,
-		cache: true,  //        <----  This is crucial to include as well to prevent jQuery from 
-		// adding on a cache-buster parameter "_=23489489749837", 
-		// invalidating our oauth-signature
+		cache: true,  					
 		dataType: 'jsonp',
 		success: function(results) {
-		// Do stuff with results
 		
-		console.log(results);
+		callback(results, target);
 		
-		//target.img = results.image_url;
-		
-		return results;
 		},
 		fail: function() {
-			// Do stuff on fail
-			console.log('AJAX request has failed :(');
+			
+			
 		},
 	};
  
-
-		// Send AJAX request via jQuery library
-		$.ajax(settings);
+		return settings;
+	
 };

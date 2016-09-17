@@ -7,6 +7,7 @@
 		
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/jasny-bootstrap.min.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">	
 
 		<title>Map</title>
@@ -25,7 +26,7 @@
 				<p><strong>Local Restaurants</strong></p>
 				<div id="location-list" class="list-group">
 					<ul data-bind="foreach: filteredRestaurants">
-						<!--<a href="#" class="list-group-item" data-bind="text: name, event: {mouseover: test}"></a>-->
+						
 						<a href="#" class="list-group-item" data-bind="text: name, click: $parent.openInfowindow"></a>
 					
 					</ul>
@@ -49,6 +50,8 @@
 		<script src="js/google-map.js"></script>
 		<script src="js/appViewModel.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jasny-bootstrap.min"></script>
+		
 		
 	</body>
 </html>
