@@ -23,7 +23,7 @@
 		map.mapTypes.set('map_style', styledMap);
 		map.setMapTypeId('map_style');
 		
-		// use restaurant info from the global data variable
+		// Use restaurant info from the globally declared data variable.
 		var locations = data.restaurants
 		,marker
 		,largeInfowindow = new google.maps.InfoWindow()
@@ -33,7 +33,7 @@
 		,title
 		,markerImage;
 		
-		// generate map markers
+		// Generate map markers.
         for (j = 0; j < locations.length; j++) {
       
           position = locations[j].location;
@@ -63,7 +63,7 @@
 		,handleYelpResults
 		,yelpRequest;
 		
-		// generate Yelp requests
+		// Generate Yelp requests.
 		for (i = 0; i < locations.length; i++) {
 			
 			/**
@@ -84,14 +84,14 @@
 		
 			}
 			
-			// create a Yelp request...
+			// Create a Yelp request...
 			yelpRequest = getYelpInfo(locations[i], handleYelpResults);
 			// and send it...
 			$.ajax(yelpRequest);
 			
 		}
 
-        // Extend the boundaries of the map for each marker
+        // Extend the boundaries of the map for each marker.
         map.fitBounds(bounds);
 
 	}
