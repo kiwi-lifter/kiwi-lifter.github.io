@@ -1,3 +1,5 @@
+
+
 var data;
 
 (function(){
@@ -19,13 +21,13 @@ function loadJSON(callback) {
                 // Parse JSON string into object
                 data = JSON.parse(response);
 				
-				//Activates google map which returns modified array for use by view model.
+				//Activates google map
 				initMap();
 				
 				// Activates knockout.js
 				ko.applyBindings(new AppViewModel);
 				
-            });
+            })
 				
 }());
 
@@ -38,6 +40,20 @@ function AppViewModel() {
 
 	self.search_Name = ko.observable('');
 
+	// This function will loop through the filtered results and list them.
+    self.showFilteredMarkers = function(filteredSearchArray, restaurantsArray) {
+		
+		for (var i = 0; i < restaurantsArray.length; i++) {
+			restaurantsArray[i].marker.setVisible(false);
+		}
+		
+		for (var i = 0; i < filteredSearchArray.length; i++) {
+			
+				filteredSearchArray[i].marker.setVisible(true);
+			}
+			
+	};
+	
 	self.filteredRestaurants = ko.computed(function () {
 	
 	var searchResult = ko.utils.arrayFilter(self.restaurants(), function (restaurant) {
@@ -45,7 +61,7 @@ function AppViewModel() {
                       (self.search_Name().length == 0 || restaurant.name.toLowerCase().indexOf(self.search_Name().toLowerCase()) > -1)
                    )        
     });
-		showFilteredMarkers(searchResult, self.restaurants());
+		self.showFilteredMarkers(searchResult, self.restaurants());
 	
 		return searchResult;
 	});
@@ -54,5 +70,7 @@ function AppViewModel() {
 
 		google.maps.event.trigger(location.marker, 'click');
     }
+	
+	
 	
  }

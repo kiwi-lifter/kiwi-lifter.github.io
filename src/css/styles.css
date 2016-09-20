@@ -11,3 +11,11 @@ input {
 ul {
 	padding-left: 0;
 }
+
+.markerInfoPanel p {
+	margin-top: 1em;
+}
+
+.infoReference {
+	font-size: 0.75em;
+}
