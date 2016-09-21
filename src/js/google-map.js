@@ -65,25 +65,7 @@
 		// Generate Yelp requests.
 		for (i = 0; i < locations.length; i++) {
 			
-			/**
-			* @callback function invoked by the getYelpInfo function to handle a sucessful asynchronous Yelp request.
-			* @param {Object} Results of a successful Yelp asynchronous request. 
-			* @param {Object} The repsective restaurant the resulting Yelp information is to be attached to.
-			**/
-			handleYelpResults = function(results, target){
-				// Yelp info object is made a property of the restaurant marker object.
-				target.marker.yelpInfo = results;
-				
-				// Create an onclick event to add an animation and open an infowindow at each marker.
-				target.marker.addListener('click', function() {
-				
-					populateInfoWindow(this, largeInfowindow);
-					markerBounce(this);
-				});
-		
-			}
-			
-			
+					
 			// Create a Yelp request...
 			
 			yelpRequest = getYelpInfo(locations[i]);
