@@ -14,20 +14,24 @@ var data;
  
 var jqxhr = $.ajax( "js/restaurant-data.json" )
   .done(function() {
-	alert( "first complete" );
+	data = jqxhr.responseJSON;
+				
   })
   .fail(function() {
-    alert( "Sorry, looks like there is no data available right now. :(" );
+ 
+	data = null;
   })
   .always(function() {
-	data = jqxhr.responseJSON;
-    console.log(data);
+	  
 	
 	// Activate google map.
 	initMap();
-				
+	
 	// Activat knockout.js.
 	ko.applyBindings(new AppViewModel);
+	
+	
+	//data && initMap() && ko.applyBindings(new AppViewModel) || alert("Failed to load data. :(");
   });
  
 				

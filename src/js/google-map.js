@@ -1,11 +1,10 @@
-
-
 /**
 	* @description Generates google map with markers, listener events  and infowindows populated 
 	* with Yelp request info.
 	* 
  **/
    function initMap(){
+	   
 	var map;   
 	// map styles
   var styles = [{"featureType":"all","elementType":"all","stylers":[{"saturation":-100},{"gamma":0.5}]}] // StyleMapType object 
@@ -84,17 +83,49 @@
 		
 			}
 			
+			
 			// Create a Yelp request...
-			yelpRequest = getYelpInfo(locations[i], handleYelpResults);
+			
+			yelpRequest = getYelpInfo(locations[i]);
+		
 			// and send it...
-			$.ajax(yelpRequest);
+		
+		// Using IIFE to create a specific scope for each Yelp restaurant request in this for loop, var i
+		// value in that scope is passed in to identify the restaurant object in the array that the Yelp 
+		// request result should be added to - i.e. locations[i].
+		(function(i){
+			var results = $.ajax(yelpRequest)
+			.done(function(results) {
+				
+				// Yelp info object is made a property of the restaurant marker object.
+				locations[i].marker.yelpInfo = results;
+				
+				// Create an onclick event to add an animation and open an infowindow at each marker.
+				locations[i].marker.addListener('click', function() {
+				
+					populateInfoWindow(this, largeInfowindow);
+					markerBounce(this);
+				})	
+				
+			})
+			.fail(function() {
+				alert( "Sorry, looks like there is no Yelp info available right now. :(" );
+			})
+			.always(function() {
+
+	
+			});
+			
+			
+			})(i);
 			
 		}
-
+		
         // Extend the boundaries of the map for each marker.
         map.fitBounds(bounds);
-
-	}
+		
+		
+   }
 	
 	/**
 	* @description Toggles the map marker on click animaition
@@ -145,7 +176,7 @@ function generateNonce() {
 * @param {handleYelpResults} callback - Handles the successful Yelp request results.
 * @returns {object} - Yelp request setting for the respective restaurant.
 **/
-function getYelpInfo(target, callback){
+function getYelpInfo(target){
 
 var YELP_BASE_URL = ''+ target.web +''
 	,YELP_CONSUMER_KEY = '_2Ah0MhfqD-6bTRas90k-g'
@@ -177,15 +208,14 @@ var settings = {
 		data: parameters,
 		cache: true,  					
 		dataType: 'jsonp',
-		success: function(results) {
-		
-		callback(results, target);
+		//success: function(results) {
+		success: function() {
+		//callback(results, target);
 		
 		},
 		fail: function() {
-			
-			alert("Yelp Request failed :(");
-		},
+		}
+		
 	};
  
 		return settings;
