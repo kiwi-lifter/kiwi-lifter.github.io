@@ -109,13 +109,8 @@
 				
 			})
 			.fail(function() {
-				alert( "Sorry, looks like there is no Yelp info available right now. :(" );
+				$('#danger').show();
 			})
-			.always(function() {
-
-	
-			});
-			
 			
 			})(i);
 			

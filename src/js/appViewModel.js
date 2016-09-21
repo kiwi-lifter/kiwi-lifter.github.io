@@ -15,24 +15,25 @@ var data;
 var jqxhr = $.ajax( "js/restaurant-data.json" )
   .done(function() {
 	data = jqxhr.responseJSON;
-				
+		
   })
   .fail(function() {
- 
-	data = null;
+	data = "";
   })
   .always(function() {
 	  
-	
-	// Activate google map.
+	if(data){
+		
+		// Activate google map.
 	initMap();
 	
 	// Activat knockout.js.
 	ko.applyBindings(new AppViewModel);
-	
-	
-	//data && initMap() && ko.applyBindings(new AppViewModel) || alert("Failed to load data. :(");
-  });
+	}
+	else {
+		$('#danger').show();
+	}
+	 });
  
 				
 }());
