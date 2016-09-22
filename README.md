@@ -1,4 +1,4 @@
-# map
+# Local Restaruants Search and Map.
 
 Project for Udacity FEND nano degree - list of local restaurants that can be searched, with a google map amd markers with restaurant information retrieved from Yelp with asynchronous jQuery requests.
 
@@ -10,7 +10,7 @@ View the web page here: `https://kiwi-lifter.github.io/src/`
 
 **1.** Clone the repo `https://github.com/kiwi-lifter/kiwi-lifter.github.io.git`.
 
-**2.** Open the src/index.html in a webrowser and click on the Cam's Pizzeria link.
+**2.** Open the src/index.html in a webrowser.
 
 ##Copyright and License##
 
