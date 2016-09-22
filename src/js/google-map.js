@@ -103,9 +103,9 @@
 				$('#danger').show();
 			})
 			
-			}(i);
+			}(i); // Instantly invoked function expression with the var i value from the for loop passed in.
 			
-		} // end for loop
+		} // End for loop.
 		
 		
         // Extend the boundaries of the map for each marker.
