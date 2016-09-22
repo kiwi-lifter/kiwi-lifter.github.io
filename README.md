@@ -1,2 +1,19 @@
 # map
-Project for Udacity FEND nano degree - google map.
+
+Project for Udacity FEND nano degree - list of local restaurants that can be searched, with a google map amd markers with restaurant information retrieved from Yelp with asynchronous jQuery requests.
+
+##Quick Start##
+
+View the web page here: `https://kiwi-lifter.github.io/src/`
+
+##Getting Started##
+
+**1.** Clone the repo `https://github.com/kiwi-lifter/map-app.git`.
+
+**2.** Open the src/index.html in a webrowser and click on the Cam's Pizzeria link.
+
+##Copyright and License##
+
+Code and documentation copyright 2016 Garrick McCaskill, Inc. Code released under the [MIT license](https://github.com/kiwi-lifter/arcade/blob/master/LICENSE.txt).
+
+
