@@ -35,17 +35,19 @@
 			
 			<div class="map-holder text-center col-sm-8">	
 				<h2>Google Map</h2>
-				<div id= "danger" class="alert alert-danger alert-dismissible collapse" role="alert">
+			<!--	<div id= "danger" class="alert alert-danger alert-dismissible collapse" role="alert" data-bind="html: warning">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
   <strong>Looks like the info is not available right now, try again later</strong>
-</div>
+</div>-->
 				<div id="map"></div>
 			
 			</div>
 	
 		</div>
+		
+		<div data-bind="alert: { message: message, type: type }"></div>
 		
 		</div><!-- end .container -->
 		

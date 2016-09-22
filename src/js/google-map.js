@@ -1,3 +1,6 @@
+
+
+
 /**
 	* @description Generates google map with markers, listener events  and infowindows populated 
 	* with Yelp request info.
@@ -23,7 +26,7 @@
 		map.setMapTypeId('map_style');
 		
 		// Use restaurant info from the globally declared data variable.
-		var locations = data.restaurants
+		var locations = appData.restaurants
 		,marker
 		,largeInfowindow = new google.maps.InfoWindow()
         ,bounds = new google.maps.LatLngBounds
@@ -31,6 +34,9 @@
 		,position
 		,title
 		,markerImage;
+		
+		
+		
 		
 		// Generate map markers.
         for (j = 0; j < locations.length; j++) {
@@ -61,7 +67,7 @@
 		var i
 		,handleYelpResults
 		,yelpRequest;
-		
+	
 		// Generate Yelp requests.
 		for (i = 0; i < locations.length; i++) {
 			
@@ -72,10 +78,13 @@
 		
 			// and send it...
 		
-		// Using IIFE to create a specific scope for each Yelp restaurant request in this for loop, var i
-		// value in that scope is passed in to identify the restaurant object in the array that the Yelp 
-		// request result should be added to - i.e. locations[i].
-		(function(i){
+		/**
+	* @description An IIFE function that has a closure function - an ajax request to the Yelp api for each restaurant in locations[].
+	* @param {Number} i - passed in with its value at this point in the for loop, without this IIFE the value of i would always 
+	* be the same final value at the completion of the for loop, for each request. Which would be no good for using the var i value for referencing the right
+	* the rigth restaurant in the array for the Yelp request result to be attached to.
+    **/
+		 var makeRequest = function(i){
 			var results = $.ajax(yelpRequest)
 			.done(function(results) {
 				
@@ -94,9 +103,10 @@
 				$('#danger').show();
 			})
 			
-			})(i);
+			}(i);
 			
-		}
+		} // end for loop
+		
 		
         // Extend the boundaries of the map for each marker.
         map.fitBounds(bounds);
