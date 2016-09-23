@@ -69,14 +69,14 @@ function initMap() {
     }
 
     var i, yelpRequest,
-	
+
         /**
          * @description contains an ajax request to the Yelp api for each restaurant in locations[].
          * @param {Number} i - passed in with its value at this point in the for loop, used for referencing the right
          * restaurant in the array for the Yelp request result to be attached to.
          **/
-         makeRequest = function(i) {
-			 console.log(i);
+        makeRequest = function(i) {
+
             $.ajax(yelpRequest)
                 .done(function(results) {
 
@@ -187,8 +187,6 @@ function getYelpInfo(target) {
         callback: 'cb',
         location: yelpURL
     };
-
-
 
     var encodedSignature = oauthSignature.generate('GET', yelpURL, parameters, YELP_CONSUMER_SECRET, YELP_TOKEN_SECRET);
     parameters.oauth_signature = encodedSignature;
