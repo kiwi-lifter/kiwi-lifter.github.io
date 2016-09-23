@@ -1,4 +1,4 @@
-# Local Restaruants Search and Map.
+# Local Restaurants Search and Map.
 
 Project for Udacity FEND nano degree - list of local restaurants that can be searched, with a google map amd markers with restaurant information retrieved from Yelp with asynchronous jQuery requests.
 
