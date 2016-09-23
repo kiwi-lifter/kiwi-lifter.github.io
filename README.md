@@ -4,7 +4,7 @@ Project for Udacity FEND nano degree - list of local restaurants that can be sea
 
 ##Quick Start##
 
-View the web page [here].(https://kiwi-lifter.github.io/src/)
+View the web page [here](https://kiwi-lifter.github.io/src/)
 
 ##Getting Started##
 
