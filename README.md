@@ -1,10 +1,10 @@
-# [Local Restaurants Search and Map](https://kiwi-lifter.github.io/src/)
+# [Local Restaurants Search and Map](https://kiwi-lifter.github.io/dist/)
 
 > Project for Udacity FEND nano degree - list of local restaurants that can be searched, with a google map amd markers with restaurant information retrieved from Yelp.com with asynchronous jQuery requests.
 
 ##Quick Start
 
-View the web page [here](https://kiwi-lifter.github.io/src/)
+View the web page [here](https://kiwi-lifter.github.io/dist/)
 
 ##Getting Started
 
