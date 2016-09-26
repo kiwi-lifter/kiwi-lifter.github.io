@@ -141,8 +141,8 @@ function populateInfoWindow(marker, infowindow) {
     if (infowindow.marker != marker) {
         infowindow.marker = marker;
         infowindow.setContent('<div class="markerInfoPanel"><h4>' + marker.yelpInfo.name + '</h4><p>' + marker.yelpInfo.location.address[0] +
-            '</p><a href="' + marker.yelpInfo.mobile_url + '"><img src="' + marker.yelpInfo.image_url +
-            '" alt="Yelp restaurant image." target="_blank"></a><p>Ph: ' + marker.yelpInfo.display_phone + '</p></div>');
+            '</p><a href="' + marker.yelpInfo.mobile_url + '" target="_blank"><img src="' + marker.yelpInfo.image_url +
+            '" alt="Yelp restaurant image." ></a><p>Ph: ' + marker.yelpInfo.display_phone + '</p></div>');
         infowindow.open(map, marker);
         // Clear marker property when the infowindow is closed.
         infowindow.addListener('closeclick', function() {
