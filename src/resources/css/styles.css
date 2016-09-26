@@ -12,6 +12,9 @@ ul {
 	padding-left: 0;
 }
 
+a.list-group-item {
+	color: #DB4300;
+}
 .markerInfoPanel p {
 	margin-top: 1em;
 }
@@ -19,3 +22,10 @@ ul {
 .infoReference {
 	font-size: 0.75em;
 }
+
+.searchFilter {
+	width: 100%;
+}
+ #footer {
+	 height: 3em;
+ }

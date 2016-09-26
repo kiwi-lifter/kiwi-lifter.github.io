@@ -8,7 +8,7 @@ var appData;
 
 (function() {
 
-    var jqxhr = $.ajax("js/restaurant-data.json")
+    var jqxhr = $.ajax("resources/data/restaurant-data.json")
         .done(function() {
             appData = jqxhr.responseJSON;
 
@@ -17,7 +17,7 @@ var appData;
             appData = "";
         })
         .always(function() {
-
+			
             if (appData) {
 
                 // Activate google map.
@@ -51,7 +51,7 @@ var appData;
             for (var i = 0; i < restaurantsArray.length; i++) {
                 restaurantsArray[i].marker.setVisible(false);
             }
-
+		
             for (var j = 0; j < filteredSearchArray.length; j++) {
 
                 filteredSearchArray[j].marker.setVisible(true);
@@ -76,13 +76,14 @@ var appData;
         });
 
         /**
-         * @description Invoke the listener event on the repective google map marker when a restaurant list item is clicked.
+         * @description Invoke the listener event on the respective google map marker when a restaurant list item is clicked.
          * @param {object} restaurant 
          **/
         self.openInfowindow = function(location) {
-
+			
             google.maps.event.trigger(location.marker, 'click');
         };
+		
 
     }
 

@@ -3,6 +3,7 @@
  * with Yelp request info.
  * 
  **/
+ 
 function initMap() {
 
     var map;
@@ -49,7 +50,7 @@ function initMap() {
         title = locations[j].name;
 
         markerImage = {
-            url: 'images/marker-orange.png',
+            url: 'resources/images/marker-orange.png',
             scaledSize: new google.maps.Size(35, 35) // scaled size
         };
 
@@ -143,10 +144,9 @@ function populateInfoWindow(marker, infowindow) {
             '</p><a href="' + marker.yelpInfo.mobile_url + '"><img src="' + marker.yelpInfo.image_url +
             '" alt="Yelp restaurant image."></a><p>Ph: ' + marker.yelpInfo.display_phone + '</p></div>');
         infowindow.open(map, marker);
-
         // Clear marker property when the infowindow is closed.
         infowindow.addListener('closeclick', function() {
-            infowindow.marker = null;
+            infowindow.marker = null;	
         });
     }
 }
