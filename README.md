@@ -1,6 +1,6 @@
-# [Local Restaurants Search and Map](https://kiwi-lifter.github.io/dist/)
+# [Local Restaurants Search and Map](https://kiwi-lifter.github.io/dist/) v1.0.0
 
-> Project for Udacity FEND nano degree - list of local restaurants that can be searched, with a google map amd markers with restaurant information retrieved from Yelp.com with asynchronous jQuery requests.
+> Udacity FEND nano degree project - search app in MvvM javascript pattern, using Knock Out.
 
 ##Quick Start
 
@@ -10,7 +10,20 @@ View the web page [here](https://kiwi-lifter.github.io/dist/)
 
 **1.** Clone the repo `https://github.com/kiwi-lifter/kiwi-lifter.github.io.git`.
 
-**2.** Open the src/index.html in a webrowser.
+**2.** Open the dist/index.html in a webrowser.
+
+##Development
+
+For instructions on how to use [Grunt](http://gruntjs.com/) see [Getting Started](http://gruntjs.com/getting-started) guide for an explanation on how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) and install and use Grunt plugins. Install this plugin with this command:
+
+For instructions on installing and using uglifyJS for minifying javascript files see [grunt-contrib-uglify README](https://github.com/gruntjs/grunt-contrib-uglify/blob/master/README.md)
+
+For instruction on installing and using cssmin for minifying css files see [grunt-contrib-uglify README](https://github.com/gruntjs/grunt-contrib-cssmin/blob/master/README.md)
+
+## Dependencies
+
+- [jQuery v3.1.1](https://github.com/jquery/jquery)
+- [Knockout v3.4.0](http://knockoutjs.com/)
 
 ##Copyright and License
 
