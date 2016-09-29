@@ -1,30 +1,36 @@
-// global variable for collecting asynchronous request info
-var appData;
-
 /**
- * @description An IIFE: makes jQuery ajax XMLHttpRequest to a JSON formatted js file, calls a google map initialise function, 
+ * @description  makes jQuery ajax XMLHttpRequest to a JSON formatted js file, calls a google map initialise function, 
  * and instantiates a knockout object.
  **/
 
-(function() {
+var runApp = function() {
+	
+	// this var holds the restaurants data from the JSON file
+	var restaurantInfo;
 
-    var jqxhr = $.ajax("resources/data/restaurant-data.json")
+    var result = $.ajax("resources/data/restaurant-data.json")
         .done(function() {
-            appData = jqxhr.responseJSON;
+            restaurantInfo = result.responseJSON;
 
         })
         .fail(function() {
-            appData = "";
+            restaurantInfo = "";
         })
         .always(function() {
-			
-            if (appData) {
-
-                // Activate google map.
-                initMap();
-
-                // Activate knockout.js.
-                ko.applyBindings(new AppViewModel());
+			// Check if restuarant data is there.
+            if (restaurantInfo) {
+				// Check that google map object is there.
+				if (typeof google === 'object' && typeof google.maps === 'object') {
+					// Activate google map and pass the restaruant data as a param.
+					 initMap(restaurantInfo);
+					
+					// Activate knockout.js.
+					ko.applyBindings(new AppViewModel());
+				}
+				else {
+					$('#danger').show();
+				}
+					
             } else {
                 $('#danger').show();
             }
@@ -37,7 +43,7 @@ var appData;
 
         var self = this;
 
-        self.restaurants = ko.observableArray(appData.restaurants);
+        self.restaurants = ko.observableArray(restaurantInfo.restaurants);
 
         self.search_Name = ko.observable('');
 
@@ -87,4 +93,4 @@ var appData;
 
     }
 
-}());
+};
