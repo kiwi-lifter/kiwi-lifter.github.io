@@ -1,10 +1,11 @@
 /**
  * @description Generates google map with markers, listener events  and infowindows populated 
  * with Yelp request info.
+ * @param {Object} restaurants - Address, coordinates, name etc of restaurants from JSON file.
  * 
  **/
  
-function initMap() {
+function initMap(targetData) {
 
     var map;
     // map styles
@@ -34,8 +35,8 @@ function initMap() {
     map.mapTypes.set('map_style', styledMap);
     map.setMapTypeId('map_style');
 
-    // Use restaurant info from the globally declared data variable.
-    var locations = appData.restaurants,
+    // Use restaurant info from data variable for markers.
+    var locations = targetData.restaurants,
         marker, largeInfowindow = new google.maps.InfoWindow(),
         bounds = new google.maps.LatLngBounds(),
         j, position, title, markerImage;
@@ -196,10 +197,9 @@ function getYelpInfo(target) {
         data: parameters,
         cache: true,
         dataType: 'jsonp',
-        //success: function(results) {
+        
         success: function() {
-            //callback(results, target);
-
+  
         },
         fail: function() {}
 
