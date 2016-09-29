@@ -15,6 +15,7 @@ ul {
 a.list-group-item {
 	color: #DB4300;
 }
+
 .markerInfoPanel p {
 	margin-top: 1em;
 }
@@ -26,6 +27,7 @@ a.list-group-item {
 .searchFilter {
 	width: 100%;
 }
+
  #footer {
 	 height: 3em;
  }
