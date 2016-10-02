@@ -12,19 +12,19 @@ ul {
 	padding-left: 0;
 }
 
-a.list-group-item {
+a.list-color{
 	color: #DB4300;
 }
 
-.markerInfoPanel p {
+.marker-info-panel p {
 	margin-top: 1em;
 }
 
-.infoReference {
+.info-reference {
 	font-size: 0.75em;
 }
 
-.searchFilter {
+.search-filter {
 	width: 100%;
 }
 
