@@ -5,10 +5,11 @@
 
 var runApp = function() {
 	
+
 	// this var holds the restaurants data from the JSON file
 	var restaurantInfo;
 
-    var result = $.ajax("resources/data/restaurant-data.json")
+    var result = $.ajax('resources/data/restaurant-data.json')
         .done(function() {
             restaurantInfo = result.responseJSON;
 
@@ -28,6 +29,7 @@ var runApp = function() {
 					ko.applyBindings(new AppViewModel());
 				}
 				else {
+					console.log('hello hello');
 					$('#danger').show();
 				}
 					
@@ -40,12 +42,12 @@ var runApp = function() {
      * @description Knockout view model.
      **/
     function AppViewModel() {
-
+		
         var self = this;
 
         self.restaurants = ko.observableArray(restaurantInfo.restaurants);
 
-        self.search_Name = ko.observable('');
+        self.searchName = ko.observable('');
 
         /**
          * @description setVisible only restaurant markers that are returned in the search result.
@@ -73,7 +75,7 @@ var runApp = function() {
 
             var searchResult = ko.utils.arrayFilter(self.restaurants(), function(restaurant) {
                 return (
-                    (self.search_Name().length === 0 || restaurant.name.toLowerCase().indexOf(self.search_Name().toLowerCase()) > -1)
+                    (self.searchName().length === 0 || restaurant.name.toLowerCase().indexOf(self.searchName().toLowerCase()) > -1)
                 );
             });
             self.showFilteredMarkers(searchResult, self.restaurants());
@@ -94,3 +96,11 @@ var runApp = function() {
     }
 
 };
+
+/**
+ * @description  Displays warning message if the google map api fails to load.
+ **/
+var googleMapFail = function(){
+	console.log('dispaly html error message');
+	$('#danger').show();
+}
