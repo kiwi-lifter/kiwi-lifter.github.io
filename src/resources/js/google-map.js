@@ -1,7 +1,7 @@
 /**
- * @description Generates google map with markers, listener events  and infowindows populated 
+ * @description Generates google map with markers, listener events  and infowindow populated 
  * with Yelp request info.
- * @param {Object} restaurants - Address, coordinates, name etc of restaurants from JSON file.
+ * @param {Object} restaurants info - Address, coordinates, name etc of restaurants from JSON file.
  * 
  **/
  
@@ -10,16 +10,16 @@ function initMap(targetData) {
     var map;
     // map styles
     var styles = [{
-        "featureType": "all",
-        "elementType": "all",
-        "stylers": [{
-            "saturation": -100
+        'featureType': 'all',
+        'elementType': 'all',
+        'stylers': [{
+            'saturation': -100
         }, {
-            "gamma": 0.5
+            'gamma': 0.5
         }]
     }]; // StyleMapType object 
     var styledMap = new google.maps.StyledMapType(styles, {
-        name: "Restaurants"
+        name: 'Restaurants'
     });
 
     // Map object
@@ -90,12 +90,13 @@ function initMap(targetData) {
 
                         populateInfoWindow(this, largeInfowindow);
                         markerBounce(this);
-                    })
-
+                    });
+			
                 })
                 .fail(function() {
                     $('#danger').show();
-                })
+					
+                });
 
         };
 
@@ -113,6 +114,10 @@ function initMap(targetData) {
 
     // Extend the boundaries of the map for each marker.
     map.fitBounds(bounds);
+	// Keep markers centered.
+	window.onresize = function() {
+		map.fitBounds(bounds);
+	}
 
 
 }
@@ -126,7 +131,7 @@ function markerBounce(marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {
         marker.setAnimation(null);
-    }, 1450);
+    }, 1400);
 
 }
 
@@ -141,7 +146,7 @@ function populateInfoWindow(marker, infowindow) {
 
     if (infowindow.marker != marker) {
         infowindow.marker = marker;
-        infowindow.setContent('<div class="markerInfoPanel"><h4>' + marker.yelpInfo.name + '</h4><p>' + marker.yelpInfo.location.address[0] +
+        infowindow.setContent('<div class="marker-info-panel"><h4>' + marker.yelpInfo.name + '</h4><p>' + marker.yelpInfo.location.address[0] +
             '</p><a href="' + marker.yelpInfo.mobile_url + '" target="_blank"><img src="' + marker.yelpInfo.image_url +
             '" alt="Yelp restaurant image." ></a><p>Ph: ' + marker.yelpInfo.display_phone + '</p></div>');
         infowindow.open(map, marker);
@@ -196,12 +201,7 @@ function getYelpInfo(target) {
         url: yelpURL,
         data: parameters,
         cache: true,
-        dataType: 'jsonp',
-        
-        success: function() {
-  
-        },
-        fail: function() {}
+        dataType: 'jsonp'
 
     };
 
