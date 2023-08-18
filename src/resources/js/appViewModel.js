@@ -1,10 +1,10 @@
 /**
- * @description  makes jQuery ajax XMLHttpRequest to a JSON formatted js file, calls a google map initialise function, 
+ * @description  makes jQuery ajax XMLHttpRequest to a JSON formatted js file, calls a google map initialise function,
  * and instantiates a knockout object.
  **/
 
 var runApp = function() {
-	
+
 
 	// this var holds the restaurants data from the JSON file
 	var restaurantInfo;
@@ -24,16 +24,17 @@ var runApp = function() {
 				if (typeof google === 'object' && typeof google.maps === 'object') {
 					// Activate google map and pass the restaruant data as a param.
 					 initMap(restaurantInfo);
-					
+
 					// Activate knockout.js.
 					ko.applyBindings(new AppViewModel());
 				}
 				else {
-					console.log('hello hello');
+					console.log('error coming from line 32 appViewModel');
 					$('#danger').show();
 				}
-					
+
             } else {
+              console.log('error coming from line 37 appViewModel');
                 $('#danger').show();
             }
         });
@@ -42,7 +43,7 @@ var runApp = function() {
      * @description Knockout view model.
      **/
     function AppViewModel() {
-		
+
         var self = this;
 
         self.restaurants = ko.observableArray(restaurantInfo.restaurants);
@@ -59,7 +60,7 @@ var runApp = function() {
             for (var i = 0; i < restaurantsArray.length; i++) {
                 restaurantsArray[i].marker.setVisible(false);
             }
-		
+
             for (var j = 0; j < filteredSearchArray.length; j++) {
 
                 filteredSearchArray[j].marker.setVisible(true);
@@ -68,7 +69,7 @@ var runApp = function() {
         };
 
         /**
-         * @description Calculates and returns the result of a restaurant search and calls a 
+         * @description Calculates and returns the result of a restaurant search and calls a
          * function to update the markers to reflect the search results.
          **/
         self.filteredRestaurants = ko.computed(function() {
@@ -85,13 +86,13 @@ var runApp = function() {
 
         /**
          * @description Invoke the listener event on the respective google map marker when a restaurant list item is clicked.
-         * @param {object} restaurant 
+         * @param {object} restaurant
          **/
         self.openInfowindow = function(location) {
-			
+
             google.maps.event.trigger(location.marker, 'click');
         };
-		
+
 
     }
 
