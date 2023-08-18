@@ -21,6 +21,7 @@ var runApp = function() {
         .always(function() {
 			// Check if restuarant data is there.
             if (restaurantInfo) {
+              console.log('restaurantInfo result- this message line 24 appView' + restaurantInfo);
 				// Check that google map object is there.
 				if (typeof google === 'object' && typeof google.maps === 'object') {
 					// Activate google map and pass the restaruant data as a param.
