@@ -12,7 +12,7 @@ var runApp = function() {
     var result = $.ajax('resources/data/restaurant-data.json')
         .done(function() {
             restaurantInfo = result.responseJSON;
-
+            console.log('restaurantInfo result:' + restaurantInfo);
         })
         .fail(function() {
             restaurantInfo = "";
