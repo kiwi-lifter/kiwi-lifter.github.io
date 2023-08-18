@@ -2,10 +2,10 @@
  * @description  makes jQuery ajax XMLHttpRequest to a JSON formatted js file, calls a google map initialise function,
  * and instantiates a knockout object.
  **/
-console.log('---------------------------------------hello hello l5 appView ---------------------------------------')
+console.log('---------------------------------------hello hello l5 appView ---------------------------------------');
 var runApp = function() {
 
-  console.log('---------------------------------------hello hello l8 appView ---------------------------------------')
+  console.log('---------------------------------------hello hello l8 appView ---------------------------------------');
 	// this var holds the restaurants data from the JSON file
 	var restaurantInfo;
 
