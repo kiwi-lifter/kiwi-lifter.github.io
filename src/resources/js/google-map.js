@@ -1,10 +1,10 @@
 /**
- * @description Generates google map with markers, listener events  and infowindow populated 
+ * @description Generates google map with markers, listener events  and infowindow populated
  * with Yelp request info.
  * @param {Object} restaurants info - Address, coordinates, name etc of restaurants from JSON file.
- * 
+ *
  **/
- 
+ console.log(' hello hello l7 googlemap')
 function initMap(targetData) {
 
     var map;
@@ -17,7 +17,7 @@ function initMap(targetData) {
         }, {
             'gamma': 0.5
         }]
-    }]; // StyleMapType object 
+    }]; // StyleMapType object
     var styledMap = new google.maps.StyledMapType(styles, {
         name: 'Restaurants'
     });
@@ -91,11 +91,11 @@ function initMap(targetData) {
                         populateInfoWindow(this, largeInfowindow);
                         markerBounce(this);
                     });
-			
+
                 })
                 .fail(function() {
                     $('#danger').show();
-					
+
                 });
 
         };
@@ -152,7 +152,7 @@ function populateInfoWindow(marker, infowindow) {
         infowindow.open(map, marker);
         // Clear marker property when the infowindow is closed.
         infowindow.addListener('closeclick', function() {
-            infowindow.marker = null;	
+            infowindow.marker = null;
         });
     }
 }
@@ -168,7 +168,7 @@ function generateNonce() {
 
 /**
  * @description Function creates a Yelp API request.
- * @param {Object} restaurant 
+ * @param {Object} restaurant
  * @param {handleYelpResults} callback - Handles the successful Yelp request results.
  * @returns {object} - Yelp request setting for the respective restaurant.
  **/
