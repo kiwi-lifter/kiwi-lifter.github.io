@@ -2,7 +2,7 @@
  * @description  makes jQuery ajax XMLHttpRequest to a JSON formatted js file, calls a google map initialise function,
  * and instantiates a knockout object.
  **/
-
+console.log('---------------------------------------hello hello l5 ---------------------------------------')
 var runApp = function() {
 
   console.log('---------------------------------------hello hello l8 ---------------------------------------')
