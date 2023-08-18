@@ -16,6 +16,7 @@ var runApp = function() {
         })
         .fail(function() {
             restaurantInfo = "";
+            console.log('restaurantInfo result failed - this error message line 19' + restaurantInfo);
         })
         .always(function() {
 			// Check if restuarant data is there.
