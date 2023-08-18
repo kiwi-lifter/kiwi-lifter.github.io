@@ -5,7 +5,7 @@
 
 var runApp = function() {
 
-
+  console.log('---------------------------------------hello hello l8 ---------------------------------------')
 	// this var holds the restaurants data from the JSON file
 	var restaurantInfo;
 
