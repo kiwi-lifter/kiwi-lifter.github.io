@@ -2,26 +2,22 @@
  * @description  makes jQuery ajax XMLHttpRequest to a JSON formatted js file, calls a google map initialise function,
  * and instantiates a knockout object.
  **/
-console.log('---------------------------------------hello hello l5 appView ---------------------------------------');
+
 var runApp = function() {
 
-  console.log('---------------------------------------hello hello l8 appView ---------------------------------------');
 	// this var holds the restaurants data from the JSON file
 	var restaurantInfo;
 
     var result = $.ajax('resources/data/restaurant-data.json')
         .done(function() {
             restaurantInfo = result.responseJSON;
-            console.log('appView l15 variable restaurantInfo result:' + restaurantInfo);
         })
         .fail(function() {
             restaurantInfo = "";
-            console.log('restaurantInfo result failed - this error message line 19 appView' + restaurantInfo);
         })
         .always(function() {
 			// Check if restuarant data is there.
             if (restaurantInfo) {
-              console.log('restaurantInfo result- this message line 24 appView' + restaurantInfo);
 				// Check that google map object is there.
 				if (typeof google === 'object' && typeof google.maps === 'object') {
 					// Activate google map and pass the restaruant data as a param.
@@ -31,12 +27,10 @@ var runApp = function() {
 					ko.applyBindings(new AppViewModel());
 				}
 				else {
-					console.log('error coming from line 32 appViewModel');
 					$('#danger').show();
 				}
 
             } else {
-              console.log('error coming from line 37 appViewModel');
                 $('#danger').show();
             }
         });

@@ -4,9 +4,9 @@
  * @param {Object} restaurants info - Address, coordinates, name etc of restaurants from JSON file.
  *
  **/
- console.log(' hello hello l7 googlemap');
-function initMap(targetData) {
 
+function initMap(targetData) {
+console.log('target data' + targetData.length);
     var map;
     // map styles
     var styles = [{
