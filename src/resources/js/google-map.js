@@ -6,7 +6,7 @@
  **/
 
 function initMap(targetData) {
-console.log('target data' + targetData.length);
+
     var map;
     // map styles
     var styles = [{
@@ -17,7 +17,8 @@ console.log('target data' + targetData.length);
         }, {
             'gamma': 0.5
         }]
-    }]; // StyleMapType object
+    }];
+    // StyleMapType object
     var styledMap = new google.maps.StyledMapType(styles, {
         name: 'Restaurants'
     });
